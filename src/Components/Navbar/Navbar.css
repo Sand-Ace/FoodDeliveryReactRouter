@@ -37,6 +37,10 @@
     gap: 4rem;
 }
 
+.navbar-right img {
+    height: 2.6rem;
+}
+
 .navbar button {
     background-color: transparent;
     font-size: 1.6rem;

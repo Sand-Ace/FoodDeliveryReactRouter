@@ -1,10 +1,21 @@
-// import { assets } from "../assets/assets";
-
+import { useState } from "react";
+import ExploreMenu from "../../Components/ExploreMenu/ExploreMenu";
+import Header from "../../Components/Header/Header";
+import "./Home.css";
 const HomePage = () => {
+  const [category, setCategory] = useState("All");
+
+  function handleClickCategory(getName) {
+    setCategory((prevState) => (prevState === getName ? "All" : getName));
+  }
+
+  console.log(category);
+
   return (
-    <main>
-      <h1>This is homePage</h1>
-    </main>
+    <>
+      <Header />
+      <ExploreMenu onSelectCategory={handleClickCategory} category={category} />
+    </>
   );
 };
 
