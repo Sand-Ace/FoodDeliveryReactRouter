@@ -1,0 +1,67 @@
+.navbar {
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    height: 8rem;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    color: var(--text-clr);
+    font-size: 1.8rem;
+}
+
+.navbar-menu a {
+    /* border-bottom: 2px solid transparent; */
+    padding-bottom: 0.2rem;
+    /* transition: 0.3s; */
+}
+
+.active {
+    border-bottom: 2px solid var(--main-clr);
+}
+
+.navbar-menu a:hover {
+    border-bottom: 2px solid var(--main-clr);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.navbar button {
+    background-color: transparent;
+    font-size: 1.6rem;
+    color: var(--text-clr);
+    border: 1px solid var(--main-clr);
+    padding: 1rem 3rem;
+    border-radius: 5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.navbar button:hover {
+    background-color: #fff4f2;
+}
+
+.navbar-search-icon {
+    position: relative;
+}
+
+.dot {
+    position: absolute;
+    min-width: 1rem;
+    min-height: 1rem;
+    background-color: var(--main-clr);
+    border-radius: 5px;
+    top: -8px;
+    right: -8px;
+}
