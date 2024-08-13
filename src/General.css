@@ -64,6 +64,7 @@
 
 html {
     font-size: 62.5%;
+
 }
 
 body {
@@ -71,6 +72,7 @@ body {
     line-height: 1;
     font-weight: 400;
     color: #49557e;
+    position: relative;
 }
 
 a {

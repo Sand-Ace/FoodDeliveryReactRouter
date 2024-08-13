@@ -1,6 +1,9 @@
 import RootLayout from "./Layout/RootLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+//contextProvider
+import { StoreContextProvider } from "./Context/StoreContext";
+
 //Pages
 import HomePage from "./Pages/HomePage/HomePage";
 import MenuPage from "./Pages/MenuPage/MenuPage";
@@ -22,8 +25,8 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <div className="app">
+    <StoreContextProvider>
       <RouterProvider router={router} />
-    </div>
+    </StoreContextProvider>
   );
 }

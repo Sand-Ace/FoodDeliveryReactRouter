@@ -1,6 +1,8 @@
+import "./MenuPage.css";
+
 const MenuPage = () => {
   return (
-    <div>
+    <div className="menu">
       <h1>This is menu page</h1>
     </div>
   );

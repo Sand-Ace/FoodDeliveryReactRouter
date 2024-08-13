@@ -23,11 +23,16 @@ const ExploreMenu = ({ onSelectCategory, category }) => {
               <img
                 src={menu.menu_image}
                 alt={menu.menu_name}
-                className={category === menu.menu_name ? "active" : ""}
+                className={
+                  category === menu.menu_name
+                    ? `active explore-img`
+                    : `explore-img`
+                }
               />
               <p>{menu.menu_name}</p>
             </div>
           ))}
+        {menu_list.length === 0 && <p>Loading meals list....</p>}
       </div>
       <hr />
     </div>
