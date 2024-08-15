@@ -1,44 +1,75 @@
 import { createContext, useState } from "react";
 
 import { food_list } from "../assets/assets";
+// import FoodItem from "../Components/FoodItem/FoodItem";
 
 const StoreContext = createContext({
   foodList: [],
-  CartItems: {},
+  CartItems: [],
   addItemToCart: () => {},
   removeItemFromCart: () => {},
   setCartItems: () => {},
+  deleteItemFromCart: () => {},
 });
 
 export function StoreContextProvider({ children }) {
-  const [CartItems, setCartItems] = useState({});
+  const [CartItems, setCartItems] = useState([]);
 
   console.log(CartItems);
 
   function addItemToCart(getId) {
     setCartItems((prevItems) => {
-      if (!prevItems[getId]) {
-        // Use computed property name [getId]
-        return { ...prevItems, [getId]: 1 };
+      const existingItemIndex = prevItems.findIndex(
+        (item) => item.id === getId
+      );
+      const existingItem = prevItems[existingItemIndex];
+
+      if (!existingItem) {
+        const findItem = food_list.find((item) => item._id === getId);
+        const { _id, name, price, image } = findItem;
+        const updatedItem = {
+          id: _id,
+          name: name,
+          price: price,
+          quantity: 1,
+          image: image,
+        };
+        const updatedItems = [...prevItems, updatedItem];
+        return updatedItems;
       } else {
-        // Increment the existing item count
-        return { ...prevItems, [getId]: prevItems[getId] + 1 };
+        const updatedItems = [...prevItems];
+        updatedItems[existingItemIndex] = {
+          ...existingItem,
+          quantity: existingItem.quantity + 1,
+        };
+        return updatedItems;
       }
     });
   }
 
   function removeItemFromCart(getId) {
     setCartItems((prevItems) => {
-      if (prevItems[getId] > 1) {
-        // Decrement the item count if it's greater than 1
-        return { ...prevItems, [getId]: prevItems[getId] - 1 };
+      const existingItemIndex = prevItems.findIndex(
+        (item) => item.id === getId
+      );
+      const existingItem = prevItems[existingItemIndex];
+
+      if (existingItem.quantity === 1) {
+        return prevItems.filter((item) => item.id !== getId);
       } else {
-        // If the count is 1, remove the item from the cart
-        const updatedItems = { ...prevItems };
-        delete updatedItems[getId];
+        const updatedItems = [...prevItems];
+        updatedItems[existingItemIndex] = {
+          ...existingItem,
+          quantity: existingItem.quantity - 1,
+        };
+
         return updatedItems;
       }
     });
+  }
+
+  function deleteItemFromCart(id) {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   }
 
   const contextVal = {
@@ -47,6 +78,7 @@ export function StoreContextProvider({ children }) {
     addItemToCart,
     removeItemFromCart,
     setCartItems,
+    deleteItemFromCart,
   };
 
   return (

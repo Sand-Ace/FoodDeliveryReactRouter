@@ -1,9 +1,13 @@
+import ExploreMenu from "../../Components/ExploreMenu/ExploreMenu";
+import FoodDisplay from "../../Components/FoodDisplay/FoodDisplay";
+
 import "./MenuPage.css";
 
 const MenuPage = () => {
   return (
-    <div className="menu">
-      <h1>This is menu page</h1>
+    <div className="MenuPage">
+      <ExploreMenu />
+      <FoodDisplay category="All" />
     </div>
   );
 };

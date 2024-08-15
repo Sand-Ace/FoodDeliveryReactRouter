@@ -3,9 +3,13 @@ import * as HeroIcons from "@heroicons/react/24/solid";
 import "../Navbar/Navbar.css";
 
 //rrd imports
+// import { Link } from "react-router-dom";
+import { useContext } from "react";
+import StoreContext from "../../Context/StoreContext";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const { CartItems } = useContext(StoreContext);
   return (
     <header className="navbar">
       <img src={assets.logo1} alt="Food delivery logo" className="logo" />
@@ -20,20 +24,27 @@ const Navbar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="menu">Menu</NavLink>
+          <NavLink
+            to="menu"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            Menu
+          </NavLink>
         </li>
         <li>
-          <NavLink to="mobile-app">Mobile-app</NavLink>
+          <a href="#app-download">Mobile-app</a>
         </li>
         <li>
-          <NavLink to="Contact-us">Contact-us</NavLink>
+          <a href="#footer">Contact-us</a>
         </li>
       </ul>
       <div className="navbar-right">
         <img src={assets.search_icon} alt="searchIcon" />
         <div className="navbar-search-icon">
-          <HeroIcons.ShoppingCartIcon width={30} />
-          <div className="dot"></div>
+          <NavLink to="/cart">
+            <HeroIcons.ShoppingCartIcon className="nav-cart" />
+          </NavLink>
+          {CartItems.length !== 0 && <div className="dot"></div>}
         </div>
         <button>Sign in</button>
       </div>

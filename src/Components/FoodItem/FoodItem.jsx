@@ -11,6 +11,8 @@ const FoodItem = ({ item }) => {
   const { _id, name, image, price, description } = item;
   //   console.log(_id, name, image, price, description);
 
+  const cartItem = CartItems.find((item) => item.id === _id);
+
   return (
     <div className="food-item">
       <div className="food-item-img-container">
@@ -24,7 +26,7 @@ const FoodItem = ({ item }) => {
         <p className="food-item-des">{description}</p>
         <div className="price-cart">
           <p className="food-item-price">${price}</p>
-          {!CartItems[_id] ? (
+          {!cartItem ? (
             <div className="add-cart">
               <span>Add to cart</span>
               <PlusCircleIcon
@@ -35,22 +37,13 @@ const FoodItem = ({ item }) => {
             </div>
           ) : (
             <div className="adder_remover">
-              {/* <img
-                src={assets.remove_icon_red}
-                alt=""
-                onClick={() => removeItemFromCart(_id)}
-              /> */}
               <MinusCircleIcon
                 width={34}
                 className="shopping-cart remove"
                 onClick={() => removeItemFromCart(_id)}
               />
-              <p>{CartItems[_id]}</p>
-              {/* <img
-                src={assets.add_icon_green}
-                alt=""
-                onClick={() => addItemToCart(_id)}
-              /> */}
+              <p>{cartItem.quantity}</p>
+
               <PlusCircleIcon
                 width={34}
                 className="shopping-cart add"

@@ -64,6 +64,7 @@
 
 html {
     font-size: 62.5%;
+    scroll-behavior: smooth;
 
 }
 
@@ -73,6 +74,7 @@ body {
     font-weight: 400;
     color: #49557e;
     position: relative;
+    background-color: var(--light-clr);
 }
 
 a {
@@ -101,7 +103,13 @@ a {
 /* Media queries template component */
 
 /* xs */
-/* @media (min-width: 475px) {} */
+@media (max-width: 475px) {
+    .app {
+        height: 100%;
+        width: 90%;
+        margin: auto;
+    }
+}
 
 /* sm */
 /* @media (min-width: 640px) {} */

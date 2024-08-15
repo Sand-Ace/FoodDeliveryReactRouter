@@ -25,7 +25,8 @@
     gap: 3rem;
     text-align: center;
     margin: 2rem 0;
-
+    overflow-x: scroll;
+    scrollbar-width: none;
 }
 
 .explore-img {
@@ -38,9 +39,6 @@
     cursor: pointer;
 }
 
-/* .explore-menu-list-item:hover img {
-    transform: scale(1.1);
-} */
 
 .explore-menu-list-item p {
     font-size: max(1.4vw, 1.6rem);
@@ -70,4 +68,25 @@
 .explore-menu-list-item:nth-child(even) .explore-img:hover,
 .explore-menu-list-item:nth-child(even) .explore-img:focus {
     transform: rotateZ(-4deg);
+}
+
+
+@media (max-width:1024px) {
+    .explore_description {
+        max-width: 100%;
+        font-size: 1.6rem;
+    }
+
+}
+
+@media (max-width:475px) {
+    .explore_description {
+        font-size: 1.4rem;
+    }
+
+    .explore-img {
+        min-width: 7rem;
+        margin-bottom: 0.6rem;
+    }
+
 }
