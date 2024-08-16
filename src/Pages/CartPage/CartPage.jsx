@@ -8,10 +8,6 @@ const CartPage = () => {
     useContext(StoreContext);
   return (
     <div className="cartItems">
-      <div className="cart-heading">
-        <h1>Your Food Cart</h1>
-        <h1>1 Items</h1>
-      </div>
       <div className="cartGrid">
         <div className="cartHeader">
           <div>Item</div>
@@ -36,13 +32,13 @@ const CartPage = () => {
                 </div>
               </div>
               <p className="item-price-total">${item.price}</p>
-              <div className="adder_remover">
+              <div className="adder_remover_cartpage">
                 <MinusCircleIcon
                   width={24}
                   className="remove"
                   onClick={() => removeItemFromCart(item.id)}
                 />
-                <p className="quantity">{item.quantity}</p>
+                <p className="quantity_cartpage">{item.quantity}</p>
 
                 <PlusCircleIcon
                   width={24}

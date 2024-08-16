@@ -8,11 +8,13 @@ import { useContext } from "react";
 import StoreContext from "../../Context/StoreContext";
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ setShowLogin }) => {
   const { CartItems } = useContext(StoreContext);
   return (
     <header className="navbar">
-      <img src={assets.logo1} alt="Food delivery logo" className="logo" />
+      <NavLink to={"/"}>
+        <img src={assets.logo1} alt="Food delivery logo" className="logo" />
+      </NavLink>
 
       <ul className="navbar-menu">
         <li>
@@ -46,7 +48,7 @@ const Navbar = () => {
           </NavLink>
           {CartItems.length !== 0 && <div className="dot"></div>}
         </div>
-        <button>Sign in</button>
+        <button onClick={() => setShowLogin(true)}>Sign in</button>
       </div>
       {/* <HeroIcons.Bars3Icon width={30} className="hamburger" /> */}
     </header>
